@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Time Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Left: Map -->
+        <div id="map"></div>
+
+        <!-- Right: Form -->
+        <div class="form-container">
+            <h2>Delivery Time Predictor</h2>
+            <form method="POST">
+                <label>Age:</label>
+                <input type="number" step="1" name="age" required>
+
+                <label>Rating:</label>
+                <input type="number" step="0.1" name="rating" required>
+
+                <label>Restaurant Latitude:</label>
+                <input type="text" id="restaurant_lat" name="restaurant_lat" required readonly>
+
+                <label>Restaurant Longitude:</label>
+                <input type="text" id="restaurant_lon" name="restaurant_lon" required readonly>
+
+                <label>Delivery Latitude:</label>
+                <input type="text" id="delivery_lat" name="delivery_lat" required readonly>
+
+                <label>Delivery Longitude:</label>
+                <input type="text" id="delivery_lon" name="delivery_lon" required readonly>
+
+                <label>Order Type:</label>
+                <select name="order">
+                    <option value="Snack">Snack</option>
+                    <option value="Drinks">Drinks</option>
+                    <option value="Street Food">Street Food</option>
+                </select>
+
+                <label>Vehicle Type:</label>
+                <select name="vehicle">
+                    <option value="scooter">scooter</option>
+                    <option value="motorcycle">motorcycle</option>
+                </select>
+
+                <input type="submit" value="Predict">
+            </form>
+
+            {% if prediction %}
+                <h3>Predicted Delivery Time: {{ prediction }} minutes</h3>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='map.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ-f2lz7qdHoIpQe7TLbpTXy2RAbdShQA&callback=initMap" async defer></script>
+</body>
+</html>
