@@ -93,11 +93,5 @@ This is a Flask-based web application that predicts delivery time based on input
 * If you encounter issues loading the model, verify your Keras and TensorFlow versions.
 * For any other errors, check the console logs for details.
 
-## License
-
-This project is licensed under the MIT License.
-
----
-
 If you want, I can also help generate a `requirements.txt` based on your imports!
 
